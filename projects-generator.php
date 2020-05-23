@@ -14,28 +14,42 @@
  LicenseURI:      https://www.gnu.org/licenses/gpl-3.0.txt
  */
 
- // Prevents public access to the plugin via URL  
+ // Prevents public access to the plugin via URL. 
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-// Defines an access name to the plugin's path
-define( 'PROJECTS_GENERATOR_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+// Defines an access name to the plugin's path.
+ define( 'PROJECTS_GENERATOR_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 
-if ( file_exists( PROJECTS_GENERATOR_PLUGIN_PATH . 'vendor/autoload.php' ) ) {
-    require_once( PROJECTS_GENERATOR_PLUGIN_PATH . 'vendor/autoload.php' );
+// Requires the Composer Autoload.
+if ( file_exists( PROJECTS_GENERATOR_PLUGIN_PATH . '/vendor/autoload.php' ) ) {
+	require_once PROJECTS_GENERATOR_PLUGIN_PATH . '/vendor/autoload.php';
 }
 
-use Src\Main;
+/**
+ * Runs on plugin activation.
+ *
+ * @return void
+ */
+function activate_projects_generator_plugin() {
+    Src\Base\Activate::activate();
+}
+register_activation_hook(  __FILE__, 'activate_projects_generator_plugin' );
 
-if ( class_exists( 'Src\Main' ) ) {
+/**
+ * Runs on plugin deactivation.
+ *
+ * @return void
+ */
+function deactivate_projects_generator_plugin() {
+    Src\Base\Deactivate::deactivate();
+}
+register_activation_hook(  __FILE__, 'deactivate_projects_generator_plugin' );
 
-    Main::register();
-
-    // Plugin activation
-    register_activation_hook( __FILE__, array( 'Src\Main', 'activate' ) );
-
-    // Plugin deactivation
-    register_deactivation_hook( __FILE__, array( 'Src\Main', 'deactivate' ) );
-
+/**
+ * Initializes the classes of the plugin.
+ */
+if ( class_exists( 'Src\\Init' ) ) {
+    Src\Init::register();
 }
