@@ -1,0 +1,17 @@
+{
+    "name": "jmeriksson/projects-generator",
+    "description": "A simple WordPress plugin that generates a 'project' custom post type with predefined styling.",
+    "type": "project",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Mikael Eriksson",
+            "email": "info@mikaeleriksson.nu"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {"Src\\": "./src"}
+    }
+}
