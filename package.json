@@ -1,0 +1,27 @@
+{
+  "name": "projects-generator",
+  "version": "1.0.0",
+  "description": "A simple WordPress plugin that generates a 'project' custom post type with predefined styling.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmeriksson/wp-projects-generator.git"
+  },
+  "keywords": [
+    "WordPress",
+    "Plugin",
+    "CPT"
+  ],
+  "author": "Mikael Eriksson",
+  "license": "GPL-3.0+",
+  "bugs": {
+    "url": "https://github.com/jmeriksson/wp-projects-generator/issues"
+  },
+  "homepage": "https://github.com/jmeriksson/wp-projects-generator#readme",
+  "dependencies": {
+    "gulp": "^4.0.2"
+  }
+}
