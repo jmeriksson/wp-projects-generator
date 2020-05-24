@@ -20,7 +20,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Defines an access name to the plugin's path.
- define( 'PROJECTS_GENERATOR_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+define( 'PROJECTS_GENERATOR_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+
+ // Defines an access name to the plugin's url.
+define( 'PROJECTS_GENERATOR_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 // Requires the Composer Autoload.
 if ( file_exists( PROJECTS_GENERATOR_PLUGIN_PATH . '/vendor/autoload.php' ) ) {
@@ -45,7 +48,7 @@ register_activation_hook(  __FILE__, 'activate_projects_generator_plugin' );
 function deactivate_projects_generator_plugin() {
     Src\Base\Deactivate::deactivate();
 }
-register_activation_hook(  __FILE__, 'deactivate_projects_generator_plugin' );
+register_deactivation_hook(  __FILE__, 'deactivate_projects_generator_plugin' );
 
 /**
  * Initializes the classes of the plugin.

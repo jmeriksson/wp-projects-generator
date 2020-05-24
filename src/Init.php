@@ -5,8 +5,6 @@
 
 namespace Src;
 
-use stdClass;
-
 /**
  * class Init
  * 
@@ -56,15 +54,4 @@ class Init
 
         return $controller;
     }
-
-    /* public static function generateCustomPostType()
-    {
-        register_post_type( 'project', array(
-            'public' => true,
-            'label' => 'Projekt',
-            'rewrite' => array(
-                'slug' => 'projekt'
-            )    
-        ) );
-    } */
 }
