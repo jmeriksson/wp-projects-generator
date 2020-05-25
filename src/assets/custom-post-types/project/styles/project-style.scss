@@ -1,25 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600;700&display=swap');
+
 $color-blue: #143D50;
+$font-family-standard: 'Open Sans', sans-serif;
+$font-weight-standard: 300;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
+$font-size-nav: .8em;
 
-.project-top-bar {
-    background: $color-blue;
-    display: flex;
-    flex-flow: row nowrap;
+.projects-generator-plugin-wrapper {
+    font-family: $font-family-standard;
+    font-weight: $font-weight-standard;
+    background-color: #fff;
 
-    ul {
-        list-style-type: none;
-        margin-left: 0;
-        margin-bottom: 0;
+    blockquote {
+        border-color: $color-blue;
+    }
 
-        li {
-            display: inline-block;
+    // Plugin global class
+    .project-container {
+        margin: 0 auto;
+        max-width: 1260px;
+    }
 
-            &:not(:last-child)::after {
-                content: '/';
+    .project-header {
+        display: flex;
+        flex-flow: row nowrap;
+        padding: 30px 45px;
+        font-weight: $font-weight-semi-bold;
+
+        &__spacer {
+            flex: 1 1 auto;
+        }
+
+        &__nav {
+            ul {
+                list-style-type: none;
+                margin-bottom: 0;
+                margin-left: 0;
+
+                li {
+                    display: inline-block;
+                    margin-left: 0;
+                    margin-top: 0;
+                    color: $color-blue;
+
+                    &:not(:last-child) {
+                        margin-right: 20px;
+                    }
+
+                    a {
+                        color: inherit;
+                        text-decoration: none;
+                        text-transform: uppercase;
+                        font-size: $font-size-nav;
+
+                        &:hover, &:active, &:focus {
+                            text-decoration: underline;
+                        }
+                    }
+                }
             }
         }
     }
 
-    .spacer {
-        flex: 1 1 auto;
+    .project-top-bar {
+        background: $color-blue;
+        display: flex;
+        flex-flow: row nowrap;
+        padding: 10px 45px;
+        font-weight: $font-weight-semi-bold;
+
+        &__breadcrumbs, &__navigation {
+            list-style-type: none;
+            margin-left: 0;
+            margin-bottom: 0;
+
+            li {
+                display: inline-block;
+                margin-left: 0;
+                margin-top: 0;
+                color: #FFF;
+
+                &:not(:last-child)::after {
+                    content: '/';
+                }
+
+                a {
+                    color: inherit;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    font-size: $font-size-nav;
+
+                    &:hover, &:active, &:focus {
+                        text-decoration: underline;
+                    }
+
+                    &.project-breadcrumb-link-active {
+                        cursor: default;
+
+                        &:hover, &:active, &:focus {
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        &__spacer {
+            flex: 1 1 auto;
+        }
     }
+
+    .project-hero {
+        position: relative;
+        height: 350px;
+
+        &__image, &__content, &__overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        &__image {
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        &__overlay {
+            background-color: $color-blue;
+            opacity: .5;
+        }
+
+        &__content {
+            color: #FFF;
+
+            h2 {
+                font-weight: $font-weight-bold;
+            }
+        }
+    }
+
+    .project-main {
+        padding: 75px 0;
+        display: flex;
+        flex-flow: row nowrap;
+
+        h1, h2, h3, h4, h5, h6, p, ul, ol {
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+
+        &__content {
+            flex: 3;
+            padding-right: 45px;
+        }
+
+        &__sidebar {
+            flex: 1;
+            border-left: 1px solid #999;
+            padding-left: 45px;
+        }
+    }
+
+    .project-footer {
+        padding: 10px 45px;
+        background-color: $color-blue;
+        color: #FFF;
+    }
+
 }
