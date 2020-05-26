@@ -36,16 +36,6 @@ class Init
     }
 
     /**
-     * Returns the array of controllers for the plugin.
-     *
-     * @return array the controllers for this plugin
-     */
-    public static function getControllers()
-    {
-        return self::$controllers;
-    }
-
-    /**
      * Instatiate a controller class object and returns it.
      *
      * @param [class] $class The controller class to be instatiated
@@ -56,5 +46,12 @@ class Init
         $controller = new $class();
 
         return $controller;
+    }
+
+    // NOTE: Simple methods such as setters and getters are left undocumented.
+
+    public static function getControllers()
+    {
+        return self::$controllers;
     }
 }

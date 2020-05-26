@@ -59,17 +59,7 @@ class CustomPostType
     }
 
     /**
-     * Returns the name of this custom post type.
-     *
-     * @return String name of post type
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Returns an array of the argumnets for this custom post type.
+     * Constructs an array of the argumnets for this custom post type.
      *
      * @return Array argumnets
      */
@@ -85,31 +75,23 @@ class CustomPostType
         );
     }
 
-    /**
-     * Returns the path to the template of this custom post type.
-     *
-     * @return String template path
-     */
+    // NOTE: Simple methods such as setters and getters are left undocumented.
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
     public function getTemplatePath()
     {
         return $this->template_path;
     }
 
-    /**
-     * Returns the url to the stylesheet of this custom post type.
-     *
-     * @return String url to stylesheet
-     */
     public function getStylesheetUrl()
     {
         return $this->stylesheet_url;
     }
 
-    /**
-     * Returns the url to the javascript document of this custom post type.
-     *
-     * @return String url to scripts
-     */
     public function getScriptsUrl()
     {
         return $this->scripts_url;

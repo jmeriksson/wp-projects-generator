@@ -15,6 +15,7 @@ use Src\Base\Models;
 class AdminPage
 {
     protected $admin_pages = array();
+    protected $parent_menu_slug = '';
 
     public function __construct()
     {
@@ -23,9 +24,10 @@ class AdminPage
     }
 
     /**
-     * Loops through all admin pages in the API and registers them. Then adds a plugin settings action
-     * link which redirects to the first admin page in the API. 
-     * 
+     * Loops through all admin pages in the API and registers them. If more
+     * than one admin page exists in API, subpages is added. Then adds a
+     * plugin settings action link which redirects to the first admin page
+     * in the API. 
      *
      * @return void
      */
@@ -33,6 +35,13 @@ class AdminPage
     {
         foreach ( $this->admin_pages as $admin_page_data ) {
             $admin_page = new Models\AdminPage($admin_page_data);
+
+            if ( !$admin_page->isSubpage() ) {
+                $this->parent_menu_slug = $admin_page->getMenuSlug();
+            } else {
+                $admin_page->setParentMenuSlug($this->parent_menu_slug);
+            }
+
             add_action ( 'admin_menu', array( $admin_page, 'register' ) );
         }
         add_action( 'plugin_action_links_' . PROJECTS_GENERATOR_PLUGIN_BASENAME, array( $this, 'addSettingsLink' ) );
