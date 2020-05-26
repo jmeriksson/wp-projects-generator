@@ -25,6 +25,9 @@ define( 'PROJECTS_GENERATOR_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
  // Defines an access name to the plugin's url.
 define( 'PROJECTS_GENERATOR_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
+// Defines an access name to the plugin's basename.
+define( 'PROJECTS_GENERATOR_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
+
 // Requires the Composer Autoload.
 if ( file_exists( PROJECTS_GENERATOR_PLUGIN_PATH . '/vendor/autoload.php' ) ) {
 	require_once PROJECTS_GENERATOR_PLUGIN_PATH . '/vendor/autoload.php';

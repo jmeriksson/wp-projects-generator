@@ -14,6 +14,8 @@ $font-size-nav: .8em;
 
     blockquote {
         border-color: $color-blue;
+        font-style: italic;
+        font-weight: $font-weight-semi-bold;
     }
 
     // Plugin global class

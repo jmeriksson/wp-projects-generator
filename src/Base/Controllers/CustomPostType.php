@@ -10,7 +10,7 @@ use Src\Base\Models;
 /**
  * class CustomPostType
  * 
- * CustomPostType Controller
+ * CustomPostType controller
  */
 class CustomPostType
 {

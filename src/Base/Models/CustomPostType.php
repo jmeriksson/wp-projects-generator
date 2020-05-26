@@ -8,7 +8,7 @@ namespace Src\Base\Models;
 /**
  * class CustomPostType
  * 
- * CustomPostType Model
+ * CustomPostType model
  */
 class CustomPostType
 {
@@ -37,22 +37,42 @@ class CustomPostType
         $this->scripts_url = $cpt_array['scripts_url'];
     }
 
+    /**
+     * Registers this post type.
+     *
+     * @return void
+     */
     public function register()
     {
         register_post_type( $this->getName(), $this->getArgs() );
     }
 
+    /**
+     * Enqueues the style and scripts.
+     *
+     * @return void
+     */
     public function enqueueScripts()
     {
-        wp_enqueue_style( 'cpt-' . $this->getName() . '-styleeeees', $this->getStylesheetUrl() );
+        wp_enqueue_style( 'cpt-' . $this->getName() . '-styles', $this->getStylesheetUrl() );
         wp_enqueue_script( 'cpt-' . $this->getName() . '-scripts', $this->getScriptsUrl() );
     }
 
+    /**
+     * Returns the name of this custom post type.
+     *
+     * @return String name of post type
+     */
     public function getName()
     {
         return $this->name;
     }
 
+    /**
+     * Returns an array of the argumnets for this custom post type.
+     *
+     * @return Array argumnets
+     */
     public function getArgs()
     {
         return array(
@@ -65,16 +85,31 @@ class CustomPostType
         );
     }
 
+    /**
+     * Returns the path to the template of this custom post type.
+     *
+     * @return String template path
+     */
     public function getTemplatePath()
     {
         return $this->template_path;
     }
 
+    /**
+     * Returns the url to the stylesheet of this custom post type.
+     *
+     * @return String url to stylesheet
+     */
     public function getStylesheetUrl()
     {
         return $this->stylesheet_url;
     }
 
+    /**
+     * Returns the url to the javascript document of this custom post type.
+     *
+     * @return String url to scripts
+     */
     public function getScriptsUrl()
     {
         return $this->scripts_url;

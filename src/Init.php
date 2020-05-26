@@ -15,7 +15,10 @@ class Init
     /**
      * Array of controllers for the plugin
      */
-    private static $controllers = [ Base\Controllers\CustomPostType::class ];
+    private static $controllers = [ 
+        Base\Controllers\CustomPostType::class,
+        Base\Controllers\AdminPage::class
+    ];
 
     /**
      * Calls the register method (if exists) on all controllers.
@@ -33,9 +36,9 @@ class Init
     }
 
     /**
-     * Returns the array of controller.
+     * Returns the array of controllers for the plugin.
      *
-     * @return array
+     * @return array the controllers for this plugin
      */
     public static function getControllers()
     {
@@ -45,8 +48,8 @@ class Init
     /**
      * Instatiate a controller class object and returns it.
      *
-     * @param [class] $class The controller class to be instatiated.
-     * @return class
+     * @param [class] $class The controller class to be instatiated
+     * @return class an instantiated controller
      */
     public static function instantiateController( $class )
     {
