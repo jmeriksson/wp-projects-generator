@@ -27,7 +27,8 @@ class AdminPage
      * Loops through all admin pages in the API and registers them. If more
      * than one admin page exists in API, subpages is added. Then adds a
      * plugin settings action link which redirects to the first admin page
-     * in the API. 
+     * in the API. Also registers any custom setting fields that exists in
+     * the API.
      *
      * @return void
      */
@@ -42,7 +43,8 @@ class AdminPage
                 $admin_page->setParentMenuSlug($this->parent_menu_slug);
             }
 
-            add_action ( 'admin_menu', array( $admin_page, 'register' ) );
+            add_action( 'admin_menu', array( $admin_page, 'register' ) );
+            add_action( 'admin_init', array( $admin_page, 'registerCustomFields') );
         }
         add_action( 'plugin_action_links_' . PROJECTS_GENERATOR_PLUGIN_BASENAME, array( $this, 'addSettingsLink' ) );
     }
@@ -60,5 +62,4 @@ class AdminPage
         array_push( $links, $settings_link);
         return $links;
     }
-    
 }

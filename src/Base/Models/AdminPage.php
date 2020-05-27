@@ -21,6 +21,7 @@ class AdminPage
     protected $icon_url;
     protected $position;
     protected $template_path;
+    protected $custom_setting_sections;
 
     public function __construct( $admin_page_array )
     {
@@ -34,6 +35,10 @@ class AdminPage
 
         if ( key_exists( 'icon_url', $admin_page_array ) ) {
             $this->icon_url = $admin_page_array['icon_url'];
+        }
+
+        if ( key_exists( 'custom_setting_sections', $admin_page_array ) ) {
+            $this->custom_setting_sections = $admin_page_array['custom_setting_sections'];
         }
 
         if ( !$this->is_subpage ) {
@@ -80,7 +85,24 @@ class AdminPage
                 $this->position
             );
         }
-        
+    }
+
+    /**
+     * If this admin page has custom fields (retrieved from the API), they are
+     * registered here.
+     *
+     * @return void
+     */
+    public function registerCustomFields()
+    {
+        if ( !isset( $this->custom_setting_sections ) ) {
+            return;
+        }
+
+        foreach ( $this->custom_setting_sections as $section_data ) {
+            $section = new AdminSettingSection($this->menu_slug, $section_data);
+            $section->register();
+        }
     }
 
     // NOTE: Simple methods such as setters and getters are left undocumented.

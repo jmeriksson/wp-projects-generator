@@ -4,6 +4,16 @@
  */
 ?>
 
-<h1>Projects Generator Plugin</h1>
+<div class="wrap">
+    <h1>Projects Generator Plugin</h1>
 
-<p>Här anger du de inställningar som ska vara globala för de projekt du skapar.</p> 
+    <?php settings_errors(); ?>
+
+    <form method="POST" action="options.php">    
+        <?php
+            settings_fields( 'projetcs_generator_plugin_main_options' );
+            do_settings_sections( 'projects_generator_plugin' );
+            submit_button();
+        ?>
+    </form>
+</div>
