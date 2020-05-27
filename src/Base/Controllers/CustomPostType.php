@@ -38,7 +38,7 @@ class CustomPostType
             $custom_post_type = new Models\CustomPostType($cpt_data);
             add_action( 'init', array( $custom_post_type, 'register' ) );
             add_filter( 'single_template', array( $custom_post_type, 'getTemplatePath') );
-            add_action( 'wp_enqueue_scripts', array( $custom_post_type, 'enqueueScripts' ) );
+            add_action( 'wp_enqueue_scripts', array( $custom_post_type, 'enqueueScripts' ), 1000 );
         }
         
         add_action( 'init', 'flush_rewrite_rules' );

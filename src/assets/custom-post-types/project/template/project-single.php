@@ -4,12 +4,31 @@
  */
 ?>
 
+<?php
+    /**
+     * Checks for any theme stylesheets and deregisters them for this template.
+     *
+     * @return void
+     */
+    function deregister_theme_styling() {
+        global $wp_styles;
+        $themes_uri = get_theme_root_uri();
+        foreach ( $wp_styles->registered as $wp_style ) {
+            if ( strpos( $wp_style->src, $themes_uri ) !== false ) {
+                wp_deregister_style(  $wp_style->handle );
+            }
+        }
+    }
+
+    add_action( 'wp_enqueue_scripts', 'deregister_theme_styling' );
+?>
+
 <!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<?php wp_head(); ?>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
@@ -68,12 +87,12 @@
                     <ul class="project-top-bar__navigation">
                         <?php if ( get_previous_post() ) : ?>
                             <li>
-                                <?php echo get_previous_post_link( '%link', 'Föregående projekt' ); ?>
+                                <?php echo get_previous_post_link( '%link', 'Föregående' ); ?>
                             </li>
                         <?php endif; ?>
                         <?php if ( get_next_post() ) : ?>
                             <li>
-                                <?php echo get_next_post_link( '%link', 'Nästa projekt' ); ?>
+                                <?php echo get_next_post_link( '%link', 'Nästa' ); ?>
                             </li>
                         <?php endif; ?>
                     </ul>
@@ -85,7 +104,7 @@
                 <div class="project-hero__overlay"></div>
                 <div class="project-hero__content">
                     <div class="project-container">
-                        <h2><?php the_title(); ?></h2>
+                        <h2 class="project-hero-title"><?php the_title(); ?></h2>
                         <div class="project-post-meta">
                             <p><?php the_date('Y-m-d'); ?> | <?php echo (get_the_category()) ? get_the_category() : 'Ingen kategori'; ?></p>
                         </div>
@@ -103,11 +122,11 @@
 
                     <div class="project-main__sidebar">
                         <div class="project-sidebar-text">
-                            <h6><?php echo get_option( 'sidebar_title' ) ?></h6>
+                            <h4><?php echo get_option( 'sidebar_title' ) ?></h4>
                             <p><?php echo get_option( 'sidebar_text' ) ?></p>
                         </div>
                         <div class="project-sidebar-nav">
-                            <h6>Senaste uppladdningarna</h6>
+                            <h4>Senaste uppladdningarna</h4>
                             <?php
                                 $posts = get_posts( array(
                                     'numberposts' => 10,
@@ -124,7 +143,7 @@
                         </div>
                         <div class="project-sidebar-social">
                             <?php if ( get_option( 'facebook_url' ) ||  get_option( 'twitter_url' ) || get_option( 'instagram_url' ) ) : ?>
-                                <h6>Sociala medier</h6>
+                                <h4>Sociala medier</h4>
                                 <ul>
                                     <?php
                                         if ( get_option( 'facebook_url' ) ) {

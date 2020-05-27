@@ -8,6 +8,15 @@
 @import './includes/project-footer';
 @import './includes//project-mobile-nav';
 
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.screen-reader-text {
+    display: none;
+}
+
 .projects-generator-plugin-wrapper {
     font-family: $font-family-standard;
     font-weight: $font-weight-standard;
@@ -15,7 +24,9 @@
     display: relative;
 
     blockquote {
-        border-color: $color-blue;
+        margin-left: 2px;
+        padding-left: 40px;
+        border-left: 2px solid $color-blue;
         font-style: italic;
         font-weight: $font-weight-semi-bold;
     }
