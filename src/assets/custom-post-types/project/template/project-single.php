@@ -18,6 +18,12 @@
     <!-- NOTE: This wrapper is added as protection so custom styling does not effect other content. -->
     <div class="projects-generator-plugin-wrapper">
 
+        <div class="project-mobile-nav">
+            <nav id="js-project-nav-menu" class="collapsed">
+                <?php echo wp_nav_menu(); ?>
+            </nav>
+        </div>
+
         <header class="project-header">
             <div class="project-header__logo">
                 <a href="<?php echo get_site_url(); ?>">
@@ -29,6 +35,15 @@
                 <nav>
                     <?php echo wp_nav_menu(); ?>
                 </nav>
+            </div>
+            <div class="project-header__nav-toggle">
+                <a href="#" class="project-nav-toggle collapsed" id="js-project-nav-toggle">
+                    <div class="bars">
+                        <div class="bar bar--first"></div>
+                        <div class="bar bar--second"></div>
+                        <div class="bar bar--third"></div>
+                    </div>
+                </a>
             </div>
         </header>
 

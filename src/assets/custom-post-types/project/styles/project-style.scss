@@ -31,6 +31,7 @@ $breakpoint-lg: 992px;
     font-family: $font-family-standard;
     font-weight: $font-weight-standard;
     background-color: #fff;
+    display: relative;
 
     blockquote {
         border-color: $color-blue;
@@ -64,6 +65,11 @@ $breakpoint-lg: 992px;
         }
 
         &__nav {
+            display: none;
+
+            @include screen-min(md) {
+                display: inline-block;
+            }
             ul {
                 list-style-type: none;
                 margin-bottom: 0;
@@ -90,6 +96,98 @@ $breakpoint-lg: 992px;
                         }
                     }
                 }
+            }
+        }
+
+        &__nav-toggle {
+            width: 36px;
+            height: 21px;
+            z-index: 110;
+
+            @include screen-min(md) {
+                display: none;
+            }
+
+            .project-nav-toggle {
+                display: block;
+                width: 100%;
+                height: 100%;
+
+                .bars {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    position: relative;
+
+                    .bar {
+                        position: absolute;
+                        width: 100%;
+                        height: 5px;
+                        border-radius: 1px;
+                        background: $color-blue;
+                        
+                        &--first {
+                            top: 8px;
+                            transition: all ease-in-out 250ms;
+                            transform: rotate(45deg);
+                        }
+                        
+                        &--second {
+                            top: 8px;
+                            transition: all ease-in-out 160ms;
+                            transform: rotate(135deg);
+                        }
+                        
+                        &--third {
+                            background: lighten($color-blue, 10%);
+                            width: 90%;
+                            bottom: 0px;
+                            right: 0px;
+                            display: none;
+                            transition: all ease-in-out 160ms;
+                        }
+                    }
+                }
+
+                &.collapsed {
+                    .bars {
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        position: relative;
+
+                        .bar {
+                            position: absolute;
+                            z-index: 110;
+                            width: 100%;
+                            height: 5px;
+                            border-radius: 1px;
+                            background: $color-blue;
+                            
+                            &--first {
+                                top: 0px;
+                                transition: all ease-in-out 250ms;
+                                transform: none;
+                            }
+                            
+                            &--second {
+                                top: 8px;
+                                transition: all ease-in-out 160ms;
+                                transform: none;
+                            }
+                            
+                            &--third {
+                                background: lighten($color-blue, 10%);
+                                width: 90%;
+                                bottom: 0px;
+                                right: 0px;
+                                display: block;
+                                transition: all ease-in-out 160ms;
+                            }
+                        }
+                    }
+                }
+                
             }
         }
     }
@@ -275,6 +373,51 @@ $breakpoint-lg: 992px;
         padding: 10px 45px;
         background-color: $color-blue;
         color: #FFF;
+    }
+
+    .project-mobile-nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 100;
+        height: 100vh;
+        width: 90%;
+        overflow: hidden;
+
+        @include screen-min(md) {
+            display: none;
+        }
+
+        nav {
+            height: 100%;
+            background: #FFF;
+            color: $color-blue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: ease-in 160ms;
+
+            ul {
+                list-style-type: none;
+                margin-top: 0;
+                margin-left: 0;
+
+                li {
+                    display: block;
+                    text-align: center;
+
+                    a {
+                        color: inherit;
+                        text-decoration: none;
+                        font-weight: $font-weight-bold;
+                    }
+                }
+            }
+
+            &.collapsed {
+                transform: translateX(100%);
+            }
+        }
     }
 
 }
