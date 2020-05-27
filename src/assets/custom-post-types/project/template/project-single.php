@@ -81,19 +81,65 @@
 
             <div class="project-container">
                 <div class="project-main">
+
                     <div class="project-main__content">
                         <?php the_content(); ?>
                     </div>
+
                     <div class="project-main__sidebar">
-                        <?php echo get_option( 'facebook_url' ) ?>
+                        <div class="project-sidebar-text">
+                            <h6><?php echo get_option( 'sidebar_title' ) ?></h6>
+                            <p><?php echo get_option( 'sidebar_text' ) ?></p>
+                        </div>
+                        <div class="project-sidebar-nav">
+                            <h6>Senaste uppladdningarna</h6>
+                            <?php
+                                $posts = get_posts( array(
+                                    'numberposts' => 10,
+                                    'post_type' => 'project'
+                                ) );
+                                if ( $posts ) {
+                                    echo '<ul>';
+                                    foreach( $posts as $post ) {
+                                        echo '<li><a href="' . get_the_permalink( $post->ID ) . '">' . $post->post_title . '</a></li>';
+                                    }
+                                    echo '</ul>';
+                                }
+                            ?>
+                        </div>
+                        <div class="project-sidebar-social">
+                            <?php if ( get_option( 'facebook_url' ) ||  get_option( 'twitter_url' ) || get_option( 'instagram_url' ) ) : ?>
+                                <h6>Sociala medier</h6>
+                                <ul>
+                                    <?php
+                                        if ( get_option( 'facebook_url' ) ) {
+                                            echo '<li><a href="' . get_option( 'facebook_url' ) . '">
+                                                <img src="' . PROJECTS_GENERATOR_PLUGIN_URL . 'src/assets/custom-post-types/project/images/facebook.svg" alt="Facebook">
+                                            </a></li>';
+                                        }
+                                        if ( get_option( 'twitter_url' ) ) {
+                                            echo '<li><a href="' . get_option( 'twitter_url' ) . '">
+                                            <img src="' . PROJECTS_GENERATOR_PLUGIN_URL . 'src/assets/custom-post-types/project/images/twitter.svg" alt="Twitter">
+                                            </a></li>';
+                                        }
+                                        if ( get_option( 'instagram_url' ) ) {
+                                            echo '<li><a href="' . get_option( 'instagram_url' ) . '">
+                                            <img src="' . PROJECTS_GENERATOR_PLUGIN_URL . 'src/assets/custom-post-types/project/images/instagram.svg" alt="Instagram">
+                                            </a></li>';
+                                        }
+                                    ?>
+                                </ul>
+                            <?php endif; ?>
+                        </div>
                     </div>
+                    
                 </div>
             </div>
 
         <?php endwhile; endif; ?>
 
         <footer class="project-footer">
-            <small>&copy; Business all rights reserved</small>
+            <small><?php echo get_option( 'footer_text' ) ?></small>
         </footer>
 
     </div>

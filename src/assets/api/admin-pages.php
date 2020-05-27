@@ -52,6 +52,11 @@ $admin_pages_api = array(
                         'option_name' => 'instagram_url',
                         'field_title' => 'Instagram URL',
                         'field_input_type' => 'text'
+                    ),
+                    array(
+                        'option_name' => 'footer_text',
+                        'field_title' => 'Footer text',
+                        'field_input_type' => 'text'
                     )
                 )
             )

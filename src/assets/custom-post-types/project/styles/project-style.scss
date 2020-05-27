@@ -22,6 +22,7 @@ $font-size-nav: .8em;
     .project-container {
         margin: 0 auto;
         max-width: 1260px;
+        padding: 0 15px;
     }
 
     .project-header {
@@ -165,6 +166,46 @@ $font-size-nav: .8em;
             flex: 1;
             border-left: 1px solid #999;
             padding-left: 45px;
+            display: flex;
+            flex-flow: column nowrap;
+
+            .project-sidebar-nav {
+                ul {
+                    list-style-type: none;
+                    margin-left: 0;
+
+                    li {
+                        margin-left: 0;
+
+                        a {
+                            color: inherit;
+                        }
+                    }
+                }
+            }
+
+            .project-sidebar-social {
+                ul {
+                    list-style-type: none;
+                    margin-left: 0;
+
+                    li {
+                        display: inline-block;
+                        margin-left: 15px;
+
+                        &:first-child {
+                            margin-left: 0;
+                        }
+
+                        a {
+
+                            img {
+                                height: 25px;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 

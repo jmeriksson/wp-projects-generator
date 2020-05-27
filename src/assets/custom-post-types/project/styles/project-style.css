@@ -14,6 +14,7 @@
 .projects-generator-plugin-wrapper .project-container {
   margin: 0 auto;
   max-width: 1260px;
+  padding: 0 15px;
 }
 
 .projects-generator-plugin-wrapper .project-header {
@@ -177,6 +178,44 @@
           flex: 1;
   border-left: 1px solid #999;
   padding-left: 45px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+}
+
+.projects-generator-plugin-wrapper .project-main__sidebar .project-sidebar-nav ul {
+  list-style-type: none;
+  margin-left: 0;
+}
+
+.projects-generator-plugin-wrapper .project-main__sidebar .project-sidebar-nav ul li {
+  margin-left: 0;
+}
+
+.projects-generator-plugin-wrapper .project-main__sidebar .project-sidebar-nav ul li a {
+  color: inherit;
+}
+
+.projects-generator-plugin-wrapper .project-main__sidebar .project-sidebar-social ul {
+  list-style-type: none;
+  margin-left: 0;
+}
+
+.projects-generator-plugin-wrapper .project-main__sidebar .project-sidebar-social ul li {
+  display: inline-block;
+  margin-left: 15px;
+}
+
+.projects-generator-plugin-wrapper .project-main__sidebar .project-sidebar-social ul li:first-child {
+  margin-left: 0;
+}
+
+.projects-generator-plugin-wrapper .project-main__sidebar .project-sidebar-social ul li a img {
+  height: 25px;
 }
 
 .projects-generator-plugin-wrapper .project-footer {
