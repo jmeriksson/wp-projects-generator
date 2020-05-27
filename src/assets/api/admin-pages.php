@@ -29,16 +29,29 @@ $admin_pages_api = array(
                 'option_group' => 'projetcs_generator_plugin_main_options',
                 'settings' => array(
                     array(
+                        'option_name' => 'sidebar_title', 
+                        'field_title' => 'Sidebar title',
+                        'field_input_type' => 'text'
+                    ),
+                    array(
+                        'option_name' => 'sidebar_text', 
+                        'field_title' => 'Sidebar text',
+                        'field_input_type' => 'textarea'
+                    ),
+                    array(
                         'option_name' => 'facebook_url', 
-                        'field_title' => 'Facebook URL'
+                        'field_title' => 'Facebook URL',
+                        'field_input_type' => 'text'
                     ),
                     array(
                         'option_name' => 'twitter_url',
-                        'field_title' => 'Twitter URL'
+                        'field_title' => 'Twitter URL',
+                        'field_input_type' => 'text'
                     ),
                     array(
                         'option_name' => 'instagram_url',
-                        'field_title' => 'Instagram URL'
+                        'field_title' => 'Instagram URL',
+                        'field_input_type' => 'text'
                     )
                 )
             )

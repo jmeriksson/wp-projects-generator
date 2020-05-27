@@ -18,6 +18,7 @@ class AdminSetting
         $this->field_args = array(
             'label_for' => $this->field_id
         );
+        $this->field_input_type = $setting['field_input_type'];
     }
 
     /**
@@ -44,7 +45,7 @@ class AdminSetting
         add_settings_field(
             $this->option_name,
             $this->field_title,
-            array( $this, 'fieldCallback' ),
+            ( $this->field_input_type == 'textarea' ) ? array( $this, 'textareaFieldCallback' ) : array( $this, 'textFieldCallback' ),
             $this->field_page,
             $this->field_section,
             $this->field_args
@@ -65,13 +66,25 @@ class AdminSetting
 
     /**
      * Callback function for $this->registerField().
-     * Echoes an input field for this setting.
+     * Echoes an input field [type="text"] for this setting.
      *
      * @return void
      */
-    public function fieldCallback()
+    public function textFieldCallback()
     {
         $value = esc_attr( get_option( $this->option_name ) );
         echo '<input type="text" class="regular-text" name="' . $this->option_name . '" value="' . $value . '">';
+    }
+    
+    /**
+     * Callback function for $this->registerField().
+     * Echos an input field [textarea] for this setting.
+     *
+     * @return void
+     */
+    public function textareaFieldCallback()
+    {
+        $value = esc_attr( get_option( $this->option_name ) );
+        echo '<textarea class="regular-text" name="' . $this->option_name . '">' . $value . '</textarea>';
     }
 }

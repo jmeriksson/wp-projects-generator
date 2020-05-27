@@ -85,7 +85,7 @@
                         <?php the_content(); ?>
                     </div>
                     <div class="project-main__sidebar">
-                        Sidebar
+                        <?php echo get_option( 'facebook_url' ) ?>
                     </div>
                 </div>
             </div>
