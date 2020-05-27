@@ -1,0 +1,76 @@
+.project-main {
+    padding: 75px 0;
+    display: flex;
+    flex-flow: column nowrap;
+
+    @include screen-min(lg) {
+        flex-flow: row nowrap;
+    }
+    
+
+    h1, h2, h3, h4, h5, h6, p, ul, ol {
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    &__content {
+        flex: 3;
+
+        @include screen-min(lg) {
+            padding-right: 45px;
+        }
+    }
+
+    &__sidebar {
+        flex: 1;
+        border-top: 1px solid #999;
+        padding-top: 45px;
+        display: flex;
+        flex-flow: column nowrap;
+
+        @include screen-min(lg) {
+            border-top: 0;
+            border-left: 1px solid #999;
+            padding-left: 45px;
+        }
+
+        .project-sidebar-nav {
+            ul {
+                list-style-type: none;
+                margin-left: 0;
+
+                li {
+                    margin-left: 0;
+
+                    a {
+                        color: inherit;
+                    }
+                }
+            }
+        }
+
+        .project-sidebar-social {
+            ul {
+                list-style-type: none;
+                margin-left: 0;
+
+                li {
+                    display: inline-block;
+                    margin-left: 15px;
+
+                    &:first-child {
+                        margin-left: 0;
+                    }
+
+                    a {
+
+                        img {
+                            height: 25px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

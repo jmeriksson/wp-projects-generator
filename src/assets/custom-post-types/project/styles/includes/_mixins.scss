@@ -1,0 +1,14 @@
+@mixin screen-min ($size) {
+    @if $size == sm {
+        @media (min-width: $breakpoint-sm) { @content; }
+    }
+    @else if $size == md {
+        @media (min-width: $breakpoint-md) { @content; }
+    }
+    @else if $size == lg {
+        @media (min-width: $breakpoint-lg) { @content; }
+    }
+    @else {
+        @media (min-width: $size) { @content; }
+    }
+}

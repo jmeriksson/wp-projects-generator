@@ -18,8 +18,8 @@
     <!-- NOTE: This wrapper is added as protection so custom styling does not effect other content. -->
     <div class="projects-generator-plugin-wrapper">
 
-        <div class="project-mobile-nav">
-            <nav id="js-project-nav-menu" class="collapsed">
+        <div class="project-mobile-nav collapsed" id="js-project-nav-menu">
+            <nav>
                 <?php echo wp_nav_menu(); ?>
             </nav>
         </div>

@@ -1,0 +1,43 @@
+.project-hero {
+    position: relative;
+    height: 275px;
+
+    @include screen-min(sm) {
+        height: 300px;
+    }
+
+    @include screen-min(md) {
+        height: 325px;
+    }
+
+    @include screen-min(lg) {
+        height: 350px;
+    }
+
+    &__image, &__content, &__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__image {
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    &__overlay {
+        background-color: $color-blue;
+        opacity: .5;
+    }
+
+    &__content {
+        color: #FFF;
+
+        h2 {
+            font-weight: $font-weight-bold;
+        }
+    }
+}
